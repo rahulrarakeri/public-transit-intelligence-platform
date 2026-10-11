@@ -1,0 +1,6 @@
+# Template for regional festival demand assumptions
+# NOTE: All multipliers represent planning assumptions (not derived from ticketing data)
+festival_name,date,region,multiplier_low,multiplier_base,multiplier_high,notes
+Sample Regional Holiday,2025-05-01,Sample Region,1.3,1.6,2.0,Public holiday gathering and retail mobility
+Annual Harvest Festival,2025-10-15,Sample Region,1.5,2.0,2.5,Major regional travel surge at intercity terminals
+Year End Celebration,2025-12-31,Sample Region,1.4,1.8,2.2,Late evening celebrations along commercial corridors

@@ -1,0 +1,44 @@
+{
+  "metadata": {
+    "model_name": "Route Service Gap Prioritization Index (RSGPI)",
+    "version": "2.0.0",
+    "description": "Composite index prioritizing transit routes for service review based on supply-side scheduling gaps and network connectivity.",
+    "normalization_method": "min_max",
+    "score_scale": 100
+  },
+  "metrics": {
+    "network_connectivity": {
+      "name": "Transfer Exposure",
+      "column": "transfer_routes_connected",
+      "direction": "positive",
+      "weight": 0.35,
+      "business_rationale": "Routes connecting to higher numbers of distinct corridors have greater passenger exchange potential and systemic network importance."
+    },
+    "off_peak_gap": {
+      "name": "Off-Peak Service Vulnerability",
+      "column": "off_peak_headway",
+      "direction": "positive",
+      "weight": 0.35,
+      "business_rationale": "Long off-peak intervals (low off-peak trip count relative to peak) highlight severe supply starvation during midday and evening hours."
+    },
+    "weekend_deficit": {
+      "name": "Weekend Service Deficit",
+      "column": "weekend_gap_flag",
+      "direction": "positive",
+      "weight": 0.15,
+      "business_rationale": "Weekday-only commuter routes leave weekend travelers with direct connectivity gaps, representing supply blind spots."
+    },
+    "stop_density": {
+      "name": "Corridor Stop Coverage",
+      "column": "stop_count",
+      "direction": "positive",
+      "weight": 0.15,
+      "business_rationale": "High stop density indicates arterial trunk corridors carrying local boarding access across multiple neighborhoods."
+    }
+  },
+  "sensitivity_analysis": {
+    "iterations": 500,
+    "perturbation_range": 0.20,
+    "confidence_level": 0.95
+  }
+}

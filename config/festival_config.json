@@ -1,0 +1,88 @@
+{
+  "notice": {
+    "status": "ASSUMPTION - not derived from ridership data",
+    "disclaimer": "All multiplier values in this file represent analytical planning assumptions based on historical metropolitan festival surges in India. They are not derived from empirical farebox, smart-card, or ticket sales telemetry and require validation with automated ticketing data."
+  },
+  "scenarios": {
+    "low": {
+      "name": "Conservative (+20% to +80% surge)",
+      "description": "Assumes moderate regional transit shifts with partial private-vehicle absorption.",
+      "multipliers": {
+        "Pongal": 1.6,
+        "Republic Day": 1.4,
+        "Holi": 1.3,
+        "Eid ul-Fitr": 1.5,
+        "Good Friday": 1.2,
+        "Independence Day": 1.4,
+        "Ganesh Chaturthi": 1.6,
+        "Navaratri": 1.3,
+        "Dussehra": 1.5,
+        "Diwali": 1.8,
+        "Diwali Day 2": 1.7,
+        "Christmas": 1.4,
+        "New Year Eve": 1.5,
+        "New Year Day": 1.4,
+        "Pongal 2026": 1.6
+      }
+    },
+    "base": {
+      "name": "Baseline (+40% to +150% surge)",
+      "description": "Standard transit authority planning assumptions for metropolitan festival mobility.",
+      "multipliers": {
+        "Pongal": 2.2,
+        "Republic Day": 1.8,
+        "Holi": 1.6,
+        "Eid ul-Fitr": 2.0,
+        "Good Friday": 1.4,
+        "Independence Day": 1.9,
+        "Ganesh Chaturthi": 2.2,
+        "Navaratri": 1.7,
+        "Dussehra": 2.0,
+        "Diwali": 2.5,
+        "Diwali Day 2": 2.3,
+        "Christmas": 1.8,
+        "New Year Eve": 2.1,
+        "New Year Day": 1.9,
+        "Pongal 2026": 2.2
+      }
+    },
+    "high": {
+      "name": "Aggressive / Stress-Test (+60% to +200% surge)",
+      "description": "High-density holiday surge stress test reflecting peak interstate terminus influx and mass shopping movements.",
+      "multipliers": {
+        "Pongal": 2.6,
+        "Republic Day": 2.2,
+        "Holi": 1.9,
+        "Eid ul-Fitr": 2.4,
+        "Good Friday": 1.6,
+        "Independence Day": 2.3,
+        "Ganesh Chaturthi": 2.6,
+        "Navaratri": 2.1,
+        "Dussehra": 2.4,
+        "Diwali": 3.0,
+        "Diwali Day 2": 2.7,
+        "Christmas": 2.2,
+        "New Year Eve": 2.5,
+        "New Year Day": 2.3,
+        "Pongal 2026": 2.6
+      }
+    }
+  },
+  "festival_calendar": [
+    {"name": "Pongal", "date": "2025-01-14", "notes": "Tamil harvest festival, massive outbound and citywide travel"},
+    {"name": "Republic Day", "date": "2025-01-26", "notes": "National holiday, coastal gathering at Marina Beach"},
+    {"name": "Holi", "date": "2025-03-14", "notes": "Spring celebrations, elevated daytime travel in urban hubs"},
+    {"name": "Eid ul-Fitr", "date": "2025-03-30", "notes": "Festive prayers and bazaar shopping around Triplicane & George Town"},
+    {"name": "Good Friday", "date": "2025-04-18", "notes": "Congregations at Santhome Basilica & Besant Nagar churches"},
+    {"name": "Independence Day", "date": "2025-08-15", "notes": "State celebrations at Fort St George & leisure crowd"},
+    {"name": "Ganesh Chaturthi", "date": "2025-08-27", "notes": "Idol immersion routes heading towards Marina Beach & ECR"},
+    {"name": "Navaratri", "date": "2025-09-22", "notes": "Golu temple circuits across Mylapore, West Mambalam & Triplicane"},
+    {"name": "Dussehra", "date": "2025-10-02", "notes": "Vijayadasami retail rush and state bus interchange movements"},
+    {"name": "Diwali", "date": "2025-10-20", "notes": "Peak shopping in T Nagar and massive outbound trips at CMBT"},
+    {"name": "Diwali Day 2", "date": "2025-10-21", "notes": "Post-Diwali family reunions and citywide transit movements"},
+    {"name": "Christmas", "date": "2025-12-25", "notes": "Evening church visits and coastal restaurant crowd on ECR"},
+    {"name": "New Year Eve", "date": "2025-12-31", "notes": "Late night crowds along Kamarajar Salai and ECR beaches"},
+    {"name": "New Year Day", "date": "2026-01-01", "notes": "Family outings to Vandalur Zoo, Marina Beach, and temples"},
+    {"name": "Pongal 2026", "date": "2026-01-14", "notes": "Annual harvest festival transit peak across CMBT and Tambaram"}
+  ]
+}

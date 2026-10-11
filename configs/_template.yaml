@@ -1,0 +1,55 @@
+# ====================================================================
+# Transit Feed Configuration Template
+# Instructions: Copy this file to configs/<your_feed_id>.yaml and populate
+# ====================================================================
+
+# Unique slug identifier for the transit feed (alphanumeric, snake_case)
+feed_id: "city_agency"
+
+# Human-readable labels
+feed_name: "Metropolitan Transit Feed"
+agency_name: "City Transit Agency"
+city: "YourCity"
+state: "YourState"
+country: "India"
+timezone: "Asia/Kolkata"
+
+# Path to the GTFS zip archive (relative to project root or absolute URL/path)
+gtfs_source: "data/gtfs_feed.zip"
+
+# Expected geographic coordinate bounding box for data quality auditing
+bounding_box:
+  lat_min: 12.00
+  lat_max: 14.00
+  lon_min: 79.00
+  lon_max: 81.00
+
+# Peak hour departure windows (hour integers in 24h format: 0 to 23)
+peak_hours:
+  morning_peak: [7, 8, 9]       # 07:00 - 10:00
+  evening_peak: [17, 18, 19]     # 17:00 - 20:00
+
+# Service frequency thresholds for headway classification
+thresholds:
+  high_headway_minutes: 30.0
+  severe_off_peak_headway_minutes: 270.0
+  top_hubs_count: 10
+
+# GTFS route_type filter (e.g., [3] for Bus, [1] for Metro/Subway, [2] for Rail)
+# Leave empty [] to process all transit modes present in feed
+route_types: [3]
+
+# Region-specific festival demand assumptions file (CSV in data/festivals/)
+festival_calendar_file: "data/festivals/tamil_nadu.csv"
+
+# Multi-criteria Route Prioritization Index (RSGPI) weights (must sum to 1.0)
+scoring_weights:
+  network_connectivity: 0.35  # Weight on intersecting corridor transfer degree
+  off_peak_gap: 0.35          # Weight on off-peak headway duration
+  weekend_deficit: 0.15       # Weight on weekday-only service shutoff
+  stop_density: 0.15          # Weight on unique stop coverage breadth
+
+# Sensitivity analysis stress-test parameters
+sensitivity_analysis:
+  iterations: 500
+  perturbation_range: 0.20

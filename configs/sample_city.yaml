@@ -1,0 +1,42 @@
+# ====================================================================
+# Sample City GTFS Feed Configuration (Test Fixture)
+# ====================================================================
+
+feed_id: "sample_city"
+feed_name: "Sample City Metro & Bus"
+agency_name: "Sample City Transit Authority"
+city: "Sample City"
+state: "Karnataka"
+country: "India"
+timezone: "Asia/Kolkata"
+
+gtfs_source: "tests/fixtures/sample_city/gtfs.zip"
+
+bounding_box:
+  lat_min: 12.90
+  lat_max: 13.15
+  lon_min: 77.50
+  lon_max: 77.75
+
+peak_hours:
+  morning_peak: [8, 9]         # 08:00 - 10:00
+  evening_peak: [17, 18, 19]   # 17:00 - 20:00
+
+thresholds:
+  high_headway_minutes: 30.0
+  severe_off_peak_headway_minutes: 270.0
+  top_hubs_count: 5
+
+route_types: [3, 1]  # Bus and Metro
+
+festival_calendar_file: "data/festivals/sample_region.csv"
+
+scoring_weights:
+  network_connectivity: 0.35
+  off_peak_gap: 0.35
+  weekend_deficit: 0.15
+  stop_density: 0.15
+
+sensitivity_analysis:
+  iterations: 500
+  perturbation_range: 0.20

@@ -1,0 +1,129 @@
+{
+  "metadata": {
+    "evaluated_at": "2026-10-10T17:36:39.898694",
+    "total_routes_scored": 50,
+    "tier_distribution": {
+      "Tier 3: Stable Operational Baseline": 36,
+      "Tier 2: Secondary Review Candidate": 12,
+      "Tier 1: Immediate Review Candidate": 2
+    }
+  },
+  "sensitivity_summary": {
+    "iterations": 500,
+    "perturbation_range": "+/- 20%",
+    "spearman_rho": {
+      "mean": 0.994,
+      "std": 0.003,
+      "min": 0.987,
+      "max": 1.0,
+      "p5": 0.989,
+      "p95": 0.999
+    },
+    "top10_stability": {
+      "mean_overlap_pct": 99.4,
+      "min_overlap_pct": 90.0,
+      "max_overlap_pct": 100.0
+    },
+    "bottom10_stability": {
+      "mean_overlap_pct": 97.7,
+      "min_overlap_pct": 90.0,
+      "max_overlap_pct": 100.0
+    },
+    "equal_weights_scenario": {
+      "spearman_rho": 0.953,
+      "top10_overlap_pct": 70.0
+    }
+  },
+  "top_10_candidates": [
+    {
+      "rank": 1,
+      "route_short_name": "32",
+      "composite_score": 74.32,
+      "review_tier": "Tier 1: Immediate Review Candidate",
+      "transfer_routes_connected": 17,
+      "off_peak_headway": 1080.0,
+      "weekend_gap_flag": 0.0
+    },
+    {
+      "rank": 1,
+      "route_short_name": "17A",
+      "composite_score": 74.32,
+      "review_tier": "Tier 1: Immediate Review Candidate",
+      "transfer_routes_connected": 17,
+      "off_peak_headway": 1080.0,
+      "weekend_gap_flag": 0.0
+    },
+    {
+      "rank": 3,
+      "route_short_name": "15",
+      "composite_score": 67.95,
+      "review_tier": "Tier 2: Secondary Review Candidate",
+      "transfer_routes_connected": 15,
+      "off_peak_headway": 1080.0,
+      "weekend_gap_flag": 0.0
+    },
+    {
+      "rank": 3,
+      "route_short_name": "21",
+      "composite_score": 67.95,
+      "review_tier": "Tier 2: Secondary Review Candidate",
+      "transfer_routes_connected": 15,
+      "off_peak_headway": 1080.0,
+      "weekend_gap_flag": 0.0
+    },
+    {
+      "rank": 5,
+      "route_short_name": "E3",
+      "composite_score": 65.14,
+      "review_tier": "Tier 2: Secondary Review Candidate",
+      "transfer_routes_connected": 16,
+      "off_peak_headway": 540.0,
+      "weekend_gap_flag": 1.0
+    },
+    {
+      "rank": 6,
+      "route_short_name": "1",
+      "composite_score": 64.77,
+      "review_tier": "Tier 2: Secondary Review Candidate",
+      "transfer_routes_connected": 14,
+      "off_peak_headway": 1080.0,
+      "weekend_gap_flag": 0.0
+    },
+    {
+      "rank": 6,
+      "route_short_name": "57",
+      "composite_score": 64.77,
+      "review_tier": "Tier 2: Secondary Review Candidate",
+      "transfer_routes_connected": 14,
+      "off_peak_headway": 1080.0,
+      "weekend_gap_flag": 0.0
+    },
+    {
+      "rank": 8,
+      "route_short_name": "E5",
+      "composite_score": 64.5,
+      "review_tier": "Tier 2: Secondary Review Candidate",
+      "transfer_routes_connected": 18,
+      "off_peak_headway": 360.0,
+      "weekend_gap_flag": 1.0
+    },
+    {
+      "rank": 9,
+      "route_short_name": "70V",
+      "composite_score": 58.41,
+      "review_tier": "Tier 2: Secondary Review Candidate",
+      "transfer_routes_connected": 12,
+      "off_peak_headway": 1080.0,
+      "weekend_gap_flag": 0.0
+    },
+    {
+      "rank": 10,
+      "route_short_name": "M79",
+      "composite_score": 54.95,
+      "review_tier": "Tier 2: Secondary Review Candidate",
+      "transfer_routes_connected": 15,
+      "off_peak_headway": 360.0,
+      "weekend_gap_flag": 1.0
+    }
+  ]
+}

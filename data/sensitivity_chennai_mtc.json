@@ -1,0 +1,11 @@
+{
+  "iterations": 500,
+  "perturbation_range": "+/- 20%",
+  "mean_spearman_rho": 0.994,
+  "std_spearman_rho": 0.003,
+  "p5_spearman_rho": 0.989,
+  "mean_top10_overlap": 99.4,
+  "mean_bottom10_overlap": 97.7,
+  "equal_weights_rho": 0.953,
+  "feed_id": "chennai_mtc"
+}

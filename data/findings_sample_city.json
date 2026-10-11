@@ -1,0 +1,60 @@
+{
+  "feed_id": "sample_city",
+  "computed_at": "2026-10-11T09:39:36.335350",
+  "network_totals": {
+    "total_routes": 10,
+    "total_stops": 30,
+    "total_trips": 100,
+    "served_stops": 15
+  },
+  "findings": [
+    {
+      "finding_id": "FINDING_1_PEAK_DISTORTION",
+      "headline": "70.0% of daily departures are compressed into 5 rush hours",
+      "key_metric": "70.0%",
+      "sub_metric": "8.9\u00d7 frequency drop off-peak",
+      "details": "Out of 100 scheduled daily trips, 70 depart during morning ([8, 9]) and evening ([17, 18, 19]) peak hours. Off-peak service drops from 14.0 trips/hr to 1.6 trips/hr.",
+      "business_implication": "Timetables reflect severe rush-hour supply compression. Midday and evening off-peak commuters experience extended headways despite active fleet allocations."
+    },
+    {
+      "finding_id": "FINDING_2_HUB_CONCENTRATION",
+      "headline": "Top 5 interchange hubs carry 50.0% of all corridor transfer connections",
+      "key_metric": "50.0%",
+      "sub_metric": "Concentrated across 16.7% of stops",
+      "details": "The top 5 multi-route interchanges handle 30 of 60 route-stop transfer opportunities across 30 physical bus stops.",
+      "business_implication": "The transit network exhibits hub-and-spoke interchange vulnerability. Infrastructure disruptions or terminal bottlenecks at super-hubs propagate network-wide cascading delays."
+    },
+    {
+      "finding_id": "FINDING_3_WEEKEND_GAP",
+      "headline": "20.0% of corridors shut down completely on weekends",
+      "key_metric": "20.0%",
+      "sub_metric": "2 of 10 corridors weekday-only",
+      "details": "2 lines operate Monday through Friday with zero Saturday or Sunday trips scheduled, leaving cross-town transit corridors unserved.",
+      "business_implication": "Weekend retail, hospital, and service-sector mobility is structurally unserved on key arterial lines, creating immediate farebox revenue recapture opportunities via idle-depot weekend rosters."
+    },
+    {
+      "finding_id": "FINDING_4_OFF_PEAK_RIGIDITY",
+      "headline": "100.0% of corridors operate with off-peak intervals >= 270 minutes",
+      "key_metric": "100.0%",
+      "sub_metric": "10 lines with severe midday gaps",
+      "details": "Because trips are clustered in peak hours, 10 of 10 corridors run <=2 trips across the remaining 19 off-peak operating hours.",
+      "business_implication": "Off-peak service behaves as sporadic single-run scheduled dispatch rather than true frequent-network transit, severely limiting non-commute utility."
+    },
+    {
+      "finding_id": "FINDING_5_SUPPLY_INELASTICITY",
+      "headline": "Flat corridor trip allocation fails to reflect network transfer demand",
+      "key_metric": "10.0 avg trips/route",
+      "sub_metric": "Equal allocation across corridors",
+      "details": "Routes receive uniform daily allocations regardless of whether they serve 7 transfer connections or 18 transfer connections, indicating legacy scheduling rather than supply optimization.",
+      "business_implication": "High-degree arterial corridors are under-supplied relative to their network connectivity, while peripheral feeder lines absorb equivalent bus assets."
+    },
+    {
+      "finding_id": "FINDING_6_FESTIVAL_CONTINGENCY",
+      "headline": "Regional holiday surges project +260 (base) to +420 (high) supplemental runs",
+      "key_metric": "+260 to +420",
+      "sub_metric": "Planning assumptions across scenarios",
+      "details": "Multi-scenario modeling based on regional holiday calendars indicates fleet surge requirements concentrating at major interchange terminals.",
+      "business_implication": "Without contingency scheduling and maintenance-window optimization, peak holiday travel periods overwhelm terminus infrastructure and bus availability."
+    }
+  ]
+}

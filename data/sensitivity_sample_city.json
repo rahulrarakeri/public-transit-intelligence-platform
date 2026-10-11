@@ -1,0 +1,11 @@
+{
+  "iterations": 500,
+  "perturbation_range": "+/- 20%",
+  "mean_spearman_rho": 0.986,
+  "std_spearman_rho": 0.029,
+  "p5_spearman_rho": 0.926,
+  "mean_top10_overlap": 100.0,
+  "mean_bottom10_overlap": 100.0,
+  "equal_weights_rho": 0.654,
+  "feed_id": "sample_city"
+}

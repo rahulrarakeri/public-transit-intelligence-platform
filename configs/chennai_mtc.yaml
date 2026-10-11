@@ -1,0 +1,43 @@
+# ====================================================================
+# Chennai MTC GTFS Feed Configuration
+# Agency: Metropolitan Transport Corporation (Chennai) Ltd.
+# ====================================================================
+
+feed_id: "chennai_mtc"
+feed_name: "Chennai MTC Bus Network"
+agency_name: "Metropolitan Transport Corporation (Chennai)"
+city: "Chennai"
+state: "Tamil Nadu"
+country: "India"
+timezone: "Asia/Kolkata"
+
+gtfs_source: "data/gtfs_feed.zip"
+
+bounding_box:
+  lat_min: 12.80
+  lat_max: 13.30
+  lon_min: 80.00
+  lon_max: 80.40
+
+peak_hours:
+  morning_peak: [7, 8, 9]       # 07:00 - 10:00
+  evening_peak: [17, 18, 19]     # 17:00 - 20:00
+
+thresholds:
+  high_headway_minutes: 30.0
+  severe_off_peak_headway_minutes: 270.0
+  top_hubs_count: 10
+
+route_types: [3]
+
+festival_calendar_file: "data/festivals/tamil_nadu.csv"
+
+scoring_weights:
+  network_connectivity: 0.35
+  off_peak_gap: 0.35
+  weekend_deficit: 0.15
+  stop_density: 0.15
+
+sensitivity_analysis:
+  iterations: 500
+  perturbation_range: 0.20
