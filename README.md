@@ -15,28 +15,28 @@
 
 ## 📑 Table of Contents
 
-- [1. Executive Summary \& Management Context](#1-executive-summary--management-context)
+- [1. Executive Summary & Management Context](#1-executive-summary--management-context)
 - [2. Primary Case Study: Chennai MTC Network](#2-primary-case-study-chennai-mtc-network)
 - [3. Key Quantified Empirical Findings](#3-key-quantified-empirical-findings)
-- [4. Platform Architecture \& System Design](#4-platform-architecture--system-design)
+- [4. Platform Architecture & System Design](#4-platform-architecture--system-design)
   - [4.1 End-to-End Data Pipeline](#41-end-to-end-data-pipeline)
   - [4.2 Multi-Feed Relational Database Schema](#42-multi-feed-relational-database-schema)
-  - [4.3 Automated Data Quality \& Integrity Suite](#43-automated-data-quality--integrity-suite)
+  - [4.3 Automated Data Quality & Integrity Suite](#43-automated-data-quality--integrity-suite)
 - [5. Algorithmic Optimization: Route Supply Gap Priority Index (RSGPI)](#5-algorithmic-optimization-route-supply-gap-priority-index-rsgpi)
   - [5.1 Mathematical Formulation](#51-mathematical-formulation)
   - [5.2 Normalization Methodology](#52-normalization-methodology)
   - [5.3 500-Iteration Monte Carlo Sensitivity Analysis](#53-500-iteration-monte-carlo-sensitivity-analysis)
   - [5.4 Candidate Prioritization Tiers](#54-candidate-prioritization-tiers)
-- [6. Festival \& Regional Surge Capacity Modeling](#6-festival--regional-surge-capacity-modeling)
+- [6. Festival & Regional Surge Capacity Modeling](#6-festival--regional-surge-capacity-modeling)
 - [7. Executive Business Intelligence Dashboard](#7-executive-business-intelligence-dashboard)
 - [8. Multi-City Extensibility (Zero-Code Onboarding)](#8-multi-city-extensibility-zero-code-onboarding)
 - [9. Repository Structure](#9-repository-structure)
-- [10. Quickstart \& Installation Guide](#10-quickstart--installation-guide)
+- [10. Quickstart & Installation Guide](#10-quickstart--installation-guide)
 - [11. Analytical SQL Catalog](#11-analytical-sql-catalog)
-- [12. Test Suite \& Validation](#12-test-suite--validation)
-- [13. Methodological Guardrails \& Limitations](#13-methodological-guardrails--limitations)
-- [14. Management Consulting \& Interview Pack](#14-management-consulting--interview-pack)
-- [15. License \& Attribution](#15-license--attribution)
+- [12. Test Suite & Validation](#12-test-suite--validation)
+- [13. Methodological Guardrails & Limitations](#13-methodological-guardrails--limitations)
+- [14. Management Consulting & Interview Pack](#14-management-consulting--interview-pack)
+- [15. License & Attribution](#15-license--attribution)
 
 ---
 
@@ -100,7 +100,7 @@ All findings are computed directly from the PostgreSQL relational database (`sql
 - **Operational Implication:** Shift workers, hospitality staff, and suburban weekend travelers along these 8 arterial lines are left stranded without direct service, forcing mode shifts to expensive auto-rickshaws or private motorized transport.
 
 ### 4. Severe Off-Peak Headway Rigidity
-- **Metric:** **82.0% of corridors (41 routes)** suffer from average off-peak headways of **$\ge 270$ minutes ($4.5$ hours)**, with several routes reaching **1,080 minutes (18 hours)** between runs.
+- **Metric:** **82.0% of corridors (41 routes)** suffer from average off-peak headways of **≥ 270 minutes (4.5 hours)**, with several routes reaching **1,080 minutes (18 hours)** between runs.
 - **Empirical Cause:** Because routes allocate 8–10 of their daily trips to peak windows, only 0–2 trips remain for the other 18 operational hours.
 - **Operational Implication:** Off-peak transit functions as sporadic single-run service rather than a dependable transit network, suppressing non-peak ridership.
 
@@ -124,47 +124,37 @@ PTIP is designed with strict separation of concerns across ingestion, database p
 
 ```mermaid
 flowchart TD
-    subgraph Ingestion ["1. Data Ingestion & Quality Layer"]
-        GTFS[GTFS Archive (.zip)] --> IngestEngine[Robust GTFS Ingestion Engine
-src/ingest.py]
-        Festivals[Regional Holiday Calendar (.csv)] --> FestEngine[Festival Surge Engine
-src/ingestion/load_festivals.py]
-        Configs[Agency Configs
-configs/*.yaml] --> IngestEngine
-        IngestEngine --> DQ[Automated Data Quality Audit
-src/data_quality.py]
+    subgraph Ingestion["1. Data Ingestion and Quality Layer"]
+        GTFS["GTFS Archive (.zip)"] --> IngestEngine["Robust GTFS Ingestion Engine<br/>src/ingest.py"]
+        Festivals["Regional Holiday Calendar (.csv)"] --> FestEngine["Festival Surge Engine<br/>src/ingestion/load_festivals.py"]
+        Configs["Agency Configs<br/>configs/*.yaml"] --> IngestEngine
+        IngestEngine --> DQ["Automated Data Quality Audit<br/>src/data_quality.py"]
     end
 
-    subgraph Storage ["2. PostgreSQL Relational Store (transit_db)"]
-        DQ -->|Clean Data| DB[(PostgreSQL 14+
-Multi-Feed Isolated Tables)]
+    subgraph Storage["2. PostgreSQL Relational Store (transit_db)"]
+        DQ -->|Clean Data| DB[("PostgreSQL 14+<br/>Multi-Feed Isolated Tables")]
         FestEngine --> DB
     end
 
-    subgraph Analytics ["3. Analytical Engine & Scoring"]
-        DB --> SQL[8x Production SQL Pipelines
-sql/analysis.sql & sql/findings.sql]
-        DB --> RSGPI[Route Prioritization Index (RSGPI)
-src/scoring.py]
-        RSGPI --> MC[500-Run Monte Carlo Simulation
-Sensitivity Analysis]
-        SQL --> Findings[Automated Headline Insights
-src/insights.py]
+    subgraph Analytics["3. Analytical Engine and Scoring"]
+        DB --> SQL["8x Production SQL Pipelines<br/>sql/analysis.sql and sql/findings.sql"]
+        DB --> RSGPI["Route Prioritization Index (RSGPI)<br/>src/scoring.py"]
+        RSGPI --> MC["500-Run Monte Carlo Simulation<br/>Sensitivity Analysis"]
+        SQL --> Findings["Automated Headline Insights<br/>src/insights.py"]
     end
 
-    subgraph Presentation ["4. Executive BI Dashboard"]
-        DB --> App[Streamlit BI Application
-app/app.py]
+    subgraph Presentation["4. Executive BI Dashboard"]
+        DB --> App["Streamlit BI Application<br/>app/app.py"]
         Findings --> App
         MC --> App
-        App --> V1[Executive KPI Summary]
-        App --> V2[Network & Hub Graphs]
-        App --> V3[Route Performance Matrix]
-        App --> V4[Festival Surge Planner]
-        App --> V5[RSGPI Optimization Matrix]
-        App --> V6[Cross-City Benchmarking]
-        App --> V7[Feed Registry & DQ Audit]
-        App --> V8[Strategic Roadmap]
+        App --> V1["Executive KPI Summary"]
+        App --> V2["Network and Hub Graphs"]
+        App --> V3["Route Performance Matrix"]
+        App --> V4["Festival Surge Planner"]
+        App --> V5["RSGPI Optimization Matrix"]
+        App --> V6["Cross-City Benchmarking"]
+        App --> V7["Feed Registry and DQ Audit"]
+        App --> V8["Strategic Roadmap"]
     end
 ```
 
@@ -220,10 +210,10 @@ Every ingested feed is audited across 7 rigorous automated integrity checks (`sr
 | :--- | :--- | :--- | :--- |
 | **Null Critical Fields** | Completeness | Key fields (`route_id`, `stop_id`, `trip_id`, times) must not be NULL | **PASS (0 nulls)** |
 | **Duplicate Primary Keys** | Uniqueness | Zero duplicate records across routes, stops, and trips | **PASS (0 dupes)** |
-| **Referential Integrity** | Consistency | Foreign key cascades: `stop_times` $ightarrow$ `trips` $ightarrow$ `routes` valid | **PASS (100% valid)** |
+| **Referential Integrity** | Consistency | Foreign key cascades: `stop_times` → `trips` → `routes` valid | **PASS (100% valid)** |
 | **Geospatial Bounding Box**| Validity | Coordinates must fall within configured agency bounding box | **PASS (100% in bounds)** |
-| **Overnight Timestamps** | GTFS Spec | Handles GTFS $>24	ext{h}$ timestamps (e.g., `25:30:00` for 01:30 AM next day) | **PASS (Normalized)** |
-| **Dwell Time Logic** | Temporal | Departure time must be $\ge$ arrival time at every stop | **PASS (0 negative dwells)** |
+| **Overnight Timestamps** | GTFS Spec | Handles GTFS >24h timestamps (e.g., `25:30:00` for 01:30 AM next day) | **PASS (Normalized)** |
+| **Dwell Time Logic** | Temporal | Departure time must be ≥ arrival time at every stop | **PASS (0 negative dwells)** |
 | **Unserved Assets** | Coverage | Identifies physical stations with 0 scheduled timetable trips | **INFO (3 dormant stops)** |
 
 ---
@@ -234,18 +224,18 @@ Every ingested feed is audited across 7 rigorous automated integrity checks (`sr
 
 To prioritize corridors for schedule restructuring without capital spending, PTIP formulates the **Route Supply Gap Priority Index (RSGPI)**. Each route $r$ receives a composite score on a scale of $[0, 100]$:
 
-$$	ext{RSGPI}(r) = 100 	imes \left[ w_1 \cdot \widetilde{C}(r) + w_2 \cdot \widetilde{H}_{	ext{off}}(r) + w_3 \cdot W_{	ext{gap}}(r) + w_4 \cdot \widetilde{D}_{	ext{stop}}(r) ight]$$
+$$\text{RSGPI}(r) = 100 \times \left[ w_1 \cdot \widetilde{C}(r) + w_2 \cdot \widetilde{H}_{\text{off}}(r) + w_3 \cdot W_{\text{gap}}(r) + w_4 \cdot \widetilde{D}_{\text{stop}}(r) \right]$$
 
 Where:
 - $\widetilde{C}(r)$: Min-Max normalized **Transfer Connectivity** (number of distinct routes intersecting with corridor $r$). Weight: $w_1 = 0.35$.
-- $\widetilde{H}_{	ext{off}}(r)$: Min-Max normalized **Off-Peak Headway Gap** (average interval between midday/night departures in minutes). Weight: $w_2 = 0.35$.
-- $W_{	ext{gap}}(r)$: Binary **Weekend Deficit Indicator** ($1.0$ if route has zero weekend service, $0.0$ if weekend active). Weight: $w_3 = 0.15$.
-- $\widetilde{D}_{	ext{stop}}(r)$: Min-Max normalized **Stop Density** (number of scheduled stops along the corridor). Weight: $w_4 = 0.15$.
+- $\widetilde{H}_{\text{off}}(r)$: Min-Max normalized **Off-Peak Headway Gap** (average interval between midday/night departures in minutes). Weight: $w_2 = 0.35$.
+- $W_{\text{gap}}(r)$: Binary **Weekend Deficit Indicator** ($1.0$ if route has zero weekend service, $0.0$ if weekend active). Weight: $w_3 = 0.15$.
+- $\widetilde{D}_{\text{stop}}(r)$: Min-Max normalized **Stop Density** (number of scheduled stops along the corridor). Weight: $w_4 = 0.15$.
 - Constraints: $\sum_{i=1}^4 w_i = 1.0$ and $w_i \ge 0$.
 
 ### 5.2 Normalization Methodology
 
-$$\widetilde{x}_r = rac{x_r - x_{\min}}{x_{\max} - x_{\min}}$$
+$$\widetilde{x}_r = \frac{x_r - x_{\min}}{x_{\max} - x_{\min}}$$
 
 - **Why Min-Max over Z-Score:** Z-scores produce negative values and uncalibrated tails, making linear composite scoring unintuitive for executive stakeholders. Min-Max bounds every indicator strictly between $0.0$ and $1.0$.
 - **Why Min-Max over Percentile Ranks:** Percentile ranks discard the magnitude of differences between values and artificially spread clustered scores. Min-Max preserves relative proportional distance.
@@ -256,22 +246,22 @@ A common criticism of multi-criteria index models in management consulting is: *
 
 To mathematically refute this pushback, PTIP executes a **500-iteration Monte Carlo sensitivity audit** (`src/scoring.py`):
 1. In each run $k$, baseline weights are perturbed by a uniform random jitter of $\pm 20\%$:
-   $$w_i^{(k)} = w_i 	imes (1 + \delta), \quad \delta \sim \mathcal{U}(-0.20, +0.20)$$
+   $$w_i^{(k)} = w_i \times (1 + \delta), \quad \delta \sim \mathcal{U}(-0.20, +0.20)$$
 2. Weights are re-normalized to sum to $1.0$: $w_i^{\prime (k)} = w_i^{(k)} / \sum w_j^{(k)}$.
-3. Route scores are recomputed, corridors are re-ranked, and the **Spearman Rank Correlation Coefficient ($ho$)** against baseline ranking is measured:
-   $$ho = 1 - rac{6 \sum d_i^2}{n(n^2 - 1)}$$
+3. Route scores are recomputed, corridors are re-ranked, and the **Spearman Rank Correlation Coefficient ($\rho$)** against baseline ranking is measured:
+   $$\rho = 1 - \frac{6 \sum d_i^2}{n(n^2 - 1)}$$
 
 #### Sensitivity Audit Results (Chennai MTC Network)
 
 | Sensitivity Metric | Result | Benchmark Interpretation |
 | :--- | :--- | :--- |
 | **Iterations** | **500 runs** | Statistical convergence achieved |
-| **Weight Perturbation Range** | **$\pm 20\%$** | Extreme parameter stress-test |
-| **Mean Spearman $ho$** | **$0.994 \pm 0.003$** | Near-perfect ranking invariance ($>0.90$ considered excellent) |
-| **5th Percentile Spearman $ho$**| **$0.989$** | In 95% of worst-case weight scenarios, correlation exceeds $0.989$ |
-| **Top-10 Candidate Set Stability**| **$99.4\%$ overlap** | Top 10 corridors remain in top 10 in $497$ of $500$ iterations |
-| **Bottom-10 Candidate Set Stability**| **$97.7\%$ overlap** | Baseline stable corridors consistently stay at the bottom |
-| **Equal-Weights Scenario ($ho$)**| **$0.953$** | Even abandoning expert weights yields $95.3\%$ rank correlation |
+| **Weight Perturbation Range** | **± 20%** | Extreme parameter stress-test |
+| **Mean Spearman $\rho$** | **0.994 ± 0.003** | Near-perfect ranking invariance (>0.90 considered excellent) |
+| **5th Percentile Spearman $\rho$**| **0.989** | In 95% of worst-case weight scenarios, correlation exceeds 0.989 |
+| **Top-10 Candidate Set Stability**| **99.4% overlap** | Top 10 corridors remain in top 10 in 497 of 500 iterations |
+| **Bottom-10 Candidate Set Stability**| **97.7% overlap** | Baseline stable corridors consistently stay at the bottom |
+| **Equal-Weights Scenario ($\rho$)**| **0.953** | Even abandoning expert weights yields 95.3% rank correlation |
 
 ### 5.4 Candidate Prioritization Tiers
 
@@ -324,9 +314,9 @@ Metropolitan mobility in India is shaped heavily by religious and cultural festi
 
 | Scenario | Multiplier Range | Mean Extra Runs | Total Annual Extra Runs | Operational Objective |
 | :--- | :---: | :---: | :---: | :--- |
-| **Low Scenario** | $+20\%$ to $+80\%$ | $+240$ trips/event | $+4,800$ trips | Base weekend depot reserve activation |
-| **Base Scenario** | $+40\%$ to $+150\%$ | $+460$ trips/event | $+7,300$ trips | Inter-depot fleet staging + scheduled driver overtime |
-| **High Scenario** | $+60\%$ to $+200\%$ | $+620$ trips/event | $+10,200$ trips | Emergency holiday rosters + temporary maintenance deferrals |
+| **Low Scenario** | +20% to +80% | +240 trips/event | +4,800 trips | Base weekend depot reserve activation |
+| **Base Scenario** | +40% to +150% | +460 trips/event | +7,300 trips | Inter-depot fleet staging + scheduled driver overtime |
+| **High Scenario** | +60% to +200% | +620 trips/event | +10,200 trips | Emergency holiday rosters + temporary maintenance deferrals |
 
 > **Operational Strategy:** Rather than purchasing new buses for holiday spikes, transit authorities should stage reserve fleets at major intercity gateway terminals (**Koyambedu CMBT** and **Tambaram**) and schedule preventative depot maintenance outside peak festival months (October–January).
 
@@ -342,9 +332,9 @@ The platform features a management consulting BI dashboard built with **Streamli
 | **2. Network Overview** | Spatial Infrastructure | Top 10 interchange hubs bar chart, route connectivity distributions, terminal rankings |
 | **3. Route Performance** | Headway & Service | Peak vs. off-peak departure breakdowns, route headway scatter plots, service tier filters |
 | **4. Festival Alerts** | Surge Planning | Holiday timeline, Low/Base/High scenario simulator, depot dispatch recommendations |
-| **5. Route Optimization** | RSGPI Priority Matrix | RSGPI vs. off-peak headway scatter plot, Monte Carlo sensitivity distribution ($ho=0.994$) |
+| **5. Route Optimization** | RSGPI Priority Matrix | RSGPI vs. off-peak headway scatter plot, Monte Carlo sensitivity distribution ($\rho=0.994$) |
 | **6. City Comparison** | Multi-Feed Benchmarking | Side-by-side metric comparison (Chennai MTC vs. Sample City fixture), cross-agency radar |
-| **7. Feed Registry** | Data Health \& Governance | Active feed metadata, automated 7-step GTFS data quality audit tables, unserved stop log |
+| **7. Feed Registry** | Data Health & Governance | Active feed metadata, automated 7-step GTFS data quality audit tables, unserved stop log |
 | **8. Hypotheses & Roadmap**| Strategic Action Plan | 5 validated hypotheses, Bain-style 3-horizon implementation roadmap, CapEx vs. OpEx analysis |
 
 ---
@@ -447,7 +437,7 @@ The platform is strictly feed-agnostic. Adding a new transit authority (e.g., Be
 
 ### Step 1: Clone Repository & Set Up Virtual Environment
 ```bash
-git clone https://github.com/rahularakeri/public-transit-intelligence-platform.git
+git clone https://github.com/rahulrarakeri/public-transit-intelligence-platform.git
 cd "public-transit-intelligence-platform"
 
 # Create and activate Python virtual environment
@@ -522,7 +512,7 @@ ORDER BY stops_served DESC;
 SELECT s.stop_id, s.stop_name, COUNT(DISTINCT r.route_id) AS routes_intersecting
 FROM stops s
 JOIN stop_times st ON s.feed_id = st.feed_id AND s.stop_id = st.stop_id
-JOIN trips t ON st.feed_id = t.feed_id AND st.trip_id = t.trip_id
+JOIN trips t ON st.feed_id = t.feed_id AND t.trip_id = t.trip_id
 JOIN routes r ON t.feed_id = r.feed_id AND t.route_id = r.route_id
 WHERE s.feed_id = :feed_id
 GROUP BY s.stop_id, s.stop_name
@@ -593,11 +583,11 @@ Transparency in data scope is critical when presenting analytics to transport mi
 ### The 2-Minute Elevator Pitch
 > *"Transit agencies often react to overcrowding by requesting budget for new buses, but the real issue is often timetable distortion. I built the Public Transit Intelligence Platform to evaluate scheduled bus supply across 50 corridors and 150 stops in Chennai using GTFS data in PostgreSQL and Python.*  
 > *I found that **68.2% of daily departures are compressed into just 6 rush hours**, dropping off-peak frequency by 6.5×, while **10 transfer hubs carry 11.2% of all network connections** and **16% of corridors shut down on weekends**.*  
-> *To fix this without CapEx spending, I designed a Route Supply Gap Priority Index and proved its stability through a 500-run Monte Carlo sensitivity analysis ($ho = 0.994$). I recommended supply-neutral schedule smoothing: trimming 10–15% of peak fleet padding to eliminate 4.5-hour midday gaps and running skeleton rosters on weekend-dark lines."*
+> *To fix this without CapEx spending, I designed a Route Supply Gap Priority Index and proved its stability through a 500-run Monte Carlo sensitivity analysis ($\rho = 0.994$). I recommended supply-neutral schedule smoothing: trimming 10–15% of peak fleet padding to eliminate 4.5-hour midday gaps and running skeleton rosters on weekend-dark lines."*
 
 ### Top 3 Verified Resume Bullets
 - **Analytics & SQL:** *Engineered an end-to-end transit analytics platform in Python & PostgreSQL analyzing 500 trips across 150 stations; uncovered that 68.2% of departures are compressed into 6 rush hours (6.5× off-peak drop) and 10 super-hubs concentrate 11.2% of all network transfers across 6.8% of stations.*
-- **Modeling & Optimization:** *Designed a multi-criteria Route Prioritization Index (RSGPI) synthesizing transfer connectivity, off-peak headways, and weekend gaps; proved 99.4% Top-10 ranking stability across a 500-iteration Monte Carlo sensitivity analysis (Spearman $ho = 0.994$).*
+- **Modeling & Optimization:** *Designed a multi-criteria Route Prioritization Index (RSGPI) synthesizing transfer connectivity, off-peak headways, and weekend gaps; proved 99.4% Top-10 ranking stability across a 500-iteration Monte Carlo sensitivity analysis (Spearman $\rho = 0.994$).*
 - **Operations & Strategy:** *Formulated supply-side optimization strategies for Chennai metropolitan bus network; identified 8 weekday-only corridors (16% of network) for weekend activation and modeled 3 scenario stress-tests projecting up to +1,000 supplemental holiday vehicle runs.*
 
 ---
